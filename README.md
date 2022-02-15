@@ -20,5 +20,25 @@ Database adapter          postgresql
 
 * ...
 # assignment-mk
-aaa
+User 
+- Task (*only the useer can see = login system??)
+
+Task
+
+- deadline
+- priority
+- status 
+・ unprocessed
+・ work in progress
+・ done
+
+1.sort by priority, deadline
+2.chosen by the status
+3.searched by  the name of the task
+
+Label
+- tank will have these lables...
+
+
+
 # assignment-mk

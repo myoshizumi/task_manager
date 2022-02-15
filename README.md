@@ -1,18 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
 * Ruby version
-
+ruby '3.0.1'
 * System dependencies
-
+Rails version             6.0.4.6
 * Configuration
 
 * Database creation
-
+Database adapter          postgresql
 * Database initialization
 
 * How to run the test suite
@@ -23,4 +20,5 @@ Things you may want to cover:
 
 * ...
 # assignment-mk
+aaa
 # assignment-mk

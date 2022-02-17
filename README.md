@@ -14,11 +14,11 @@ Rails version             6.0.4.6
 * Data Type: name: string, datail: text
 
 -----------------------------
-
-|   Model Name Task  | Column    |  Data Type   | 
-| --- | --- | --- | 
-|  ---  |  name   |  string   | 
-|  ---  |    detail  |  text   | 
+Task
+| Column    |  Data Type   | 
+| :---: | :--- :| 
+|  name   |  string   | 
+|    detail  |  text   | 
 
 User 
 - Task (*only the useer can see = login system??)

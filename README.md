@@ -14,7 +14,7 @@ Rails version             6.0.4.6
 * Data Type: name: string, datail: text
 
 -----------------------------
-Task
+**Task**
 | Column  |  Data Type   | 
 | :---: | :---:| 
 |  name   |  string   | 

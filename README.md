@@ -22,10 +22,11 @@ Database adapter          postgresql
 *
 # assignment-mk
 
-**Model Name Task**
+***Model Name Task***
 * Column: name, detail
 * Data Type: name: string, datail: text
 
+-----------------------------
 
 User 
 - Task (*only the useer can see = login system??)

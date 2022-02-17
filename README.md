@@ -19,10 +19,14 @@ Database adapter          postgresql
 * Deployment instructions
 
 * ...
-* **Model Name Task**
+*
+# assignment-mk
+
+**Model Name Task**
 * Column: name, detail
 * Data Type: name: string, datail: text
-# assignment-mk
+
+
 User 
 - Task (*only the useer can see = login system??)
 

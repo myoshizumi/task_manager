@@ -17,8 +17,8 @@ Rails version             6.0.4.6
 
 |   Model Name Task  | Column    |  Data Type   | 
 | --- | --- | --- | 
-|     |  name   |  string   | 
-|     |    datail  |  text   | 
+|   /  |  name   |  string   | 
+|   /  |    detail  |  text   | 
 
 User 
 - Task (*only the useer can see = login system??)

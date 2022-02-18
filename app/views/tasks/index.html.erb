@@ -9,9 +9,9 @@
 
 <% @tasks.each do |task| %>
   <tr class="task_row">
-    <th><%= task.name %></th>
-    <th><%= task.detail %></th>
-    <th><%= task.updated_at.strftime("%Y-%m-%d %H:%M") %></th>
+    <td class="task_name"><%= task.name %></td>
+    <td class="task_detail"><%= task.detail %></td>
+    <td><%= task.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
     <td><%= button_to '詳細を確認する', task_path(task.id), method: :get %></td>
     <td><%= button_to 'タスクを編集する', edit_task_path(task.id), method: :get, data: { confirm: '本当に編集していいですか？'} %></td>
     <td><%= button_to 'タスクを削除する', task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></td>

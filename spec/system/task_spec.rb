@@ -1,6 +1,8 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
-  let!(:task){ FactoryBot.create(:task, name: 'task') }
+  let! (:task){ FactoryBot.create(:task, name: 'task') }
+  let! (:task_second){ FactoryBot.create(:task, name: 'task_second') }
+  let! (:task_third){ FactoryBot.create(:task, name: 'task_third') }
   before do
     visit tasks_path
   end
@@ -30,8 +32,11 @@ RSpec.describe 'タスク管理機能', type: :system do
       it '新しいタスクが一番上に表示される' do
         visit tasks_path
         current_path
-        task_list = all('.task_row')
-        expect(task_list).to be {Task.all.order(updated_at: :desc)}
+        task_list = all('.task_name')
+        expect(task_list[0]).to have_content 'task_third'
+        expect(task_list[1]).to have_content 'task_second'
+        expect(task_list[2]).to have_content 'task'
+        # expect(task_list).to be {Task.all.order(updated_at: :asc)}
       end
     end
   end

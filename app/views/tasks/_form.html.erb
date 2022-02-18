@@ -18,6 +18,10 @@
     <%= form.label :detail, 'タスク詳細' %>
     <%= form.text_field :detail %>
   </div>
+  <div class="task_expired_at">
+    <%= form.label :expired_at, '終了期限' %>
+    <%= form.datetime_field :expired_at %>
+  </div>
   <%= form.submit %>
 <% end %>
 

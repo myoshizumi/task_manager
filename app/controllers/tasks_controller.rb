@@ -2,12 +2,23 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
   def index
-    if params[:sort_expired]
+    @tasks = Task.all.order(created_at: :desc)
+    if params[:task].present?
+      @tasks = @tasks.where('name LIKE ?', "%#{params[:task][:search]}%") 
+    elsif params[:sort_expired]
       @tasks = Task.all.order(expired_at: :desc)
     else
       @tasks = Task.all.order(created_at: :desc)
     end
   end
+
+  # def task_name_search
+  #   if params[:task].present?
+  #     @tasks = Task.by_name_search
+  #   else
+  #     @tasks = Task.all.order(created_at: :desc)
+  #   end
+  # end
 
   def new
     @task = Task.new
@@ -47,7 +58,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :detail, :expired_at)
+    params.require(:task).permit(:name, :detail, :expired_at, :search)
   end
 
   def set_task

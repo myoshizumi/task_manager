@@ -4,16 +4,16 @@
 
 <%= form_with(url: tasks_path, scope: :task, method: :get, local: true ) do |form| %>
   <div class="name_search">
-    <%= form.label :search, 'タスク名' %>
-    <%= form.text_field :search %>
-    <%= form.select :status, options_for_select([[''],['未着手'], ['着手'], ['完了']]), id: "status", class: "form-control"  %>
+    <h5><%= form.label :search, 'タスク名とステータスによる検索' %></h5>
+    <h5><%= form.text_field :search %></h5>
+    <h5><%= form.select :status, options_for_select([[''],['未着手'], ['着手'], ['完了']]), id: "status", class: "form-control"  %></h5>
 
     <%# <%= form.select :status, Task.statuses.keys.map {|k| [k, k]}, {}, { data: {} } %> 
-    <%= form.submit '検索する' , name: nil %>
+    <h5><%= form.submit '検索する' , name: nil %></h5>
   </div>
 <% end %>
 
-<table>
+<table class="index_table">
   <tr>
     <th>タスク名</th>
     <th>タスク詳細</th>
@@ -39,4 +39,4 @@
 <!--
 <%= button_to '終了期限でソートする', tasks_path(sort_expired: "true"), method: :post %>
 -->
-<%= button_to '新しいタスクを追加する', {controller: "tasks", action: "new"}, {method: :get} %>
+<h5><%= button_to '新しいタスクを追加する', {controller: "tasks", action: "new"}, {method: :get} %></h5>

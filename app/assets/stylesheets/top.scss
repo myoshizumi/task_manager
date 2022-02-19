@@ -1,0 +1,42 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+h1 {
+	text-align: center;
+	color: #ffffff;
+}
+h2 {
+	text-align: center;
+	color: #ffffff;
+}
+h4 {
+	text-align: center;
+	color: #ffffff;
+}
+h5 {
+	text-align: center;
+	color: #ffffff;
+}
+body {
+	text-align: center;
+	background: linear-gradient(to bottom right, #000000, hsl(0, 0%, 50%));
+}
+
+.index_table {
+	text-align: center;
+	// border: solid 5px rgb(0, 0, 0);
+	margin: 30px auto;
+}
+
+.index_table th {
+	color: white;
+}
+
+.index_table td {
+	color: white;
+}
+
+.task_row {
+	text-underline-offset: initial;
+}

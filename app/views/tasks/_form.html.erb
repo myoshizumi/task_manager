@@ -9,26 +9,26 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class="task_name">
-    <%= form.label :name, 'タスク名' %>
-    <%= form.text_field :name %>
-  </div>
-  <div class="task_detail">
-    <%= form.label :detail, 'タスク詳細' %>
-    <%= form.text_field :detail %>
-  </div>
-  <div class="task_expired_at">
-    <%= form.label :expired_at, '終了期限' %>
-    <%= form.datetime_field :expired_at %>
-  </div>
-  
-  <div>
-    <%= form.label :status, 'ステータス' %>
-    <%= form.select :status, Task.statuses.keys.map {|k| [k, k]}, {}, { data: {} } %>
-  </div>
+  <div class="new_contents"> 
+    <div class="task_name">
+      <h4><%= form.label :name, 'タスク名' %></h4>
+      <h4><%= form.text_field :name %></h4>
+    </div>
+    <div class="task_detail">
+      <h4><%= form.label :detail, 'タスク詳細' %></h4>
+      <h4><%= form.text_field :detail %></h4>
+    </div>
+    <div class="task_expired_at">
+      <h4><%= form.label :expired_at, '終了期限' %></h4>
+      <h4><%= form.datetime_field :expired_at %></h4>
+    </div>
+    <div class="task_status">
+      <h4><%= form.label :status, 'ステータス' %></h4>
+      <h4><%= form.select :status, Task.statuses.keys.map {|k| [k, k]}, {}, { data: {} } %></h4>
+    </div>
 
-  <%= form.submit style: 'margin-bottom: 10px;' %>
+    <h4><%= form.submit style: 'margin-bottom: 10px;' %></h4>
+  </div>
 <% end %>
+  <h4><%= button_to "タスク一覧に戻る", tasks_path, method: :get %></h4>
 
-<%= button_to "タスク一覧に戻る", tasks_path, method: :get %>

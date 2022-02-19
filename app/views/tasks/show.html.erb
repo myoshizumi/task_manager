@@ -1,5 +1,5 @@
 <h1>タスク詳細</h1>
-<p>タスク名<%= @task.name %></p>
-<p>タスク詳細<%= @task.detail %></p>
-<p>終了期限<%= @task.expired_at %></p>
+<h4>タスク名<%= @task.name %></h4>
+<h4>タスク詳細<%= @task.detail %></h4>
+<h4>終了期限<%= @task.expired_at %></h4>
 <%= button_to "タスク一覧に戻る", tasks_path, method: :get %>

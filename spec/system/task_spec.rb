@@ -1,8 +1,8 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
-  let! (:task){ FactoryBot.create(:task, name: 'task', expired_at: '02/19') }
-  let! (:task_second){ FactoryBot.create(:task, name: 'task_second', expired_at: '02/17') }
-  let! (:task_third){ FactoryBot.create(:task, name: 'task_third',expired_at: '02/15') }
+  let! (:task){ FactoryBot.create(:task, name: 'task', expired_at: '02/19', status: "完了") }
+  let! (:task_second){ FactoryBot.create(:task, name: 'task_second', expired_at: '02/17', status: "未着手") }
+  let! (:task_third){ FactoryBot.create(:task, name: 'task_third',expired_at: '02/15', status: "") }
   before do
     visit tasks_path
   end
@@ -13,6 +13,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         fill_in 'task_name', with: "Anything"
         fill_in 'task_detail', with: "NothingToDo"
         fill_in 'task[expired_at]', with: :expired_at
+        select '完了'
         click_on 'commit'
         expect(page).to have_content 'task'
       end
@@ -43,7 +44,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       it 'will be the furthest deadline on the top' do
         visit tasks_path
         current_path
-        click_on "終了期限でソートする"
+        click_on "終了期限"
         task_expired_at_list = all('.task_expired_at')
         expect(task_expired_at_list[0]).to have_content '02/19'
         expect(task_expired_at_list[1]).to have_content '02/17'

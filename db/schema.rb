@@ -23,4 +23,5 @@ ActiveRecord::Schema.define(version: 2022_02_19_104527) do
     t.datetime "expired_at"
     t.integer "status"
   end
+
 end

@@ -6,7 +6,9 @@
   <div class="name_search">
     <%= form.label :search, 'タスク名' %>
     <%= form.text_field :search %>
-    <%= form.select :status, Task.statuses.keys.map {|k| [k, k]}, {}, { data: {} } %>
+    <%= form.select :status, options_for_select([[''],['未着手'], ['着手'], ['完了']]), id: "status", class: "form-control"  %>
+
+    <%# <%= form.select :status, Task.statuses.keys.map {|k| [k, k]}, {}, { data: {} } %> 
     <%= form.submit '検索する' , name: nil %>
   </div>
 <% end %>

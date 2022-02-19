@@ -22,7 +22,13 @@
     <%= form.label :expired_at, '終了期限' %>
     <%= form.datetime_field :expired_at %>
   </div>
-  <%= form.submit %>
+  
+  <div>
+    <%= form.label :status, 'ステータス' %>
+    <%= form.select :status, Task.statuses.keys.map {|k| [k, k]}, {}, { data: {} } %>
+  </div>
+
+  <%= form.submit style: 'margin-bottom: 10px;' %>
 <% end %>
 
 <%= button_to "タスク一覧に戻る", tasks_path, method: :get %>

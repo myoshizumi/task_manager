@@ -12,7 +12,8 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit new_task_path
         fill_in 'task_name', with: "Anything"
         fill_in 'task_detail', with: "NothingToDo"
-        fill_in 'task[expired_at]', with: :expired_at
+        fill_in 'task[expired_at]', with: '002020-10-06-10:10'
+        sleep(3)
         select '完了'
         click_on 'commit'
         expect(page).to have_content 'task'
@@ -45,6 +46,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit tasks_path
         current_path
         click_on "終了期限"
+        sleep(2)
         task_expired_at_list = all('.task_expired_at')
         expect(task_expired_at_list[0]).to have_content '02/19'
         expect(task_expired_at_list[1]).to have_content '02/17'
@@ -56,6 +58,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit tasks_path
         current_path
         click_on "優先順位"
+        sleep(2)
         task_priority_list = all('.task_priority')
         expect(task_priority_list[0]).to have_content '高'
         expect(task_priority_list[1]).to have_content '中'

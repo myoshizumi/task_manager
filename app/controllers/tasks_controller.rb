@@ -9,11 +9,11 @@ class TasksController < ApplicationController
       if status_params.present? && search_params.present?
         # @tasks = Task.task_status
         @tasks = Task.where(status: status_params).page(params[:page]).per(5)
-        @tasks = @tasks.task_search.page(params[:page]).per(5)
-        # @tasks = @tasks.where('name LIKE ?', "%#{search_params}%").page(params[:page]).per(5)
+        # @tasks = @tasks.task_search.page(params[:page]).per(5)
+        @tasks = @tasks.where('name LIKE ?', "%#{search_params}%").page(params[:page]).per(5)
       elsif search_params.present? 
-        @tasks = @tasks.task_search.page(params[:page]).per(5)
-        # @tasks = @tasks.where('name LIKE ?', "%#{search_params}%").page(params[:page]).per(5)
+        # @tasks = @tasks.task_search.page(params[:page]).per(5)
+        @tasks = @tasks.where('name LIKE ?', "%#{search_params}%").page(params[:page]).per(5)
       elsif status_params.present?
         # @tasks = Task.task_status
         @tasks = Task.where(status: status_params).page(params[:page]).per(5)

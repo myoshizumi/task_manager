@@ -16,7 +16,7 @@ RSpec.describe Task, type: :model do
     end
     context 'タスクのタイトルと詳細に内容が記載されている場合' do
       it 'バリデーションが通る' do
-        task = Task.new(name: 'no_name', detail: 'no_detail') 
+        task = Task.new(name: 'no_name', detail: 'no_detail', expired_at: '01/01 11:11') 
         expect(task).to be_valid
       end
     end

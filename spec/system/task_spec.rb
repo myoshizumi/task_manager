@@ -63,4 +63,42 @@ RSpec.describe 'タスク管理機能', type: :system do
        end
      end
   end
+  describe 'Manage funciton for task', type: :system do
+    describe 'search system' do
+      before do
+        # FactoryBot.create(:task, title: "task")
+        # FactoryBot.create
+        FactoryBot.create(:task, name: 'task', status: "完了")
+        FactoryBot.create(:task, name: 'task_second', status: "未着手")
+        FactoryBot.create(:task, name: 'task_third', status: "")
+      end
+      context 'search with vague letters for name field' do
+        it 'will find specific names by the keywords' do
+          visit tasks_path
+          fill_in "task[search]", with: "ask"
+          click_on "検索する"
+          expect(page).to have_content "task"
+        end
+      end
+      context 'search by the status' do
+        it 'will find tasks by the status' do
+          visit tasks_path
+          select "未着手"
+          click_on "検索する"
+          expect(page).to have_content "second"
+        end
+      end
+      context 'search with vague letters and the status' do
+        it 'will find the tasks including the search letter and the status' do
+          visit tasks_path
+          fill_in "task[search]", with: "task"
+          select "完了"
+          click_on "検索する"
+          # binding.pry
+          expect(page).to have_content "task"
+        end
+      end
+    end
+  end
+      
 end

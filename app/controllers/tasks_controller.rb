@@ -1,16 +1,20 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
-
+  
   def index
       @tasks = Task.all.created_order
     if params[:task].present? 
-      if params[:task][:status].present? && params[:task][:search].present?
-        @tasks = Task.where(status: params[:task][:status])
-        @tasks = @tasks.where('name LIKE ?', "%#{params[:task][:search]}%")
-      elsif params[:task][:search].present? 
-        @tasks = @tasks.where('name LIKE ?', "%#{params[:task][:search]}%")
-      elsif params[:task][:status].present?
-        @tasks = Task.where(status: params[:task][:status])
+      if status_params.present? && search_params.present?
+        # @tasks = Task.task_status
+        @tasks = Task.where(status: status_params)
+        # @tasks = @tasks.task_search
+        @tasks = @tasks.where('name LIKE ?', "%#{search_params}%")
+      elsif search_params.present? 
+        # @tasks = @tasks.task_search
+        @tasks = @tasks.where('name LIKE ?', "%#{search_params}%")
+      elsif status_params.present?
+        # @tasks = Task.task_status
+        @tasks = Task.where(status: status_params)
       end
     elsif params[:sort_expired]
       @tasks = Task.all.order(expired_at: :desc)
@@ -58,6 +62,14 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:name, :detail, :expired_at, :status)
+  end
+
+  def status_params
+    params[:task][:status]
+  end
+
+  def search_params
+    params[:task][:search]
   end
 
   def set_task

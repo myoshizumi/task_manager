@@ -1,8 +1,8 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
-  let! (:task){ FactoryBot.create(:task, name: 'task', expired_at: '02/19', status: "完了") }
-  let! (:task_second){ FactoryBot.create(:task, name: 'task_second', expired_at: '02/17', status: "未着手") }
-  let! (:task_third){ FactoryBot.create(:task, name: 'task_third',expired_at: '02/15', status: "") }
+  let! (:task){ FactoryBot.create(:task, name: 'task', expired_at: '02/19', status: "完了", priority: "低") }
+  let! (:task_second){ FactoryBot.create(:task, name: 'task_second', expired_at: '02/17', status: "未着手", priority: "中") }
+  let! (:task_third){ FactoryBot.create(:task, name: 'task_third',expired_at: '02/15', status: "", priority: "高") }
   before do
     visit tasks_path
   end
@@ -49,6 +49,17 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(task_expired_at_list[0]).to have_content '02/19'
         expect(task_expired_at_list[1]).to have_content '02/17'
         expect(task_expired_at_list[2]).to have_content '02/15'
+      end
+    end
+    context 'Descending order by the priority' do
+      it 'will be the high priority on the top' do
+        visit tasks_path
+        current_path
+        click_on "優先順位"
+        task_priority_list = all('.task_priority')
+        expect(task_priority_list[0]).to have_content '高'
+        expect(task_priority_list[1]).to have_content '中'
+        expect(task_priority_list[2]).to have_content '低'
       end
     end
   end

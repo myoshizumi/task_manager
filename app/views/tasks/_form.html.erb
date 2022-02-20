@@ -24,7 +24,7 @@
     </div>
     <div class="task_status">
       <h4><%= form.label :status, 'ステータス' %></h4>
-      <h4><%= form.select :status, Task.statuses.keys.map {|k| [k, k]}, {}, { data: {} } %></h4>
+      <h4><%= form.select :status, options_for_select([['未着手'], ['着手'], ['完了']]), id: "status", class: "form-control"  %></h4>
     </div>
     <div class="task_priority">
       <h4><%= form.label :priority, '優先順位' %></h4>

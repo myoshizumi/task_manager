@@ -35,5 +35,5 @@
     <% end %>  
   </table>
   
-<h5><%= paginate @tasks %></h5>
+<h5 class="pagenate"><%= paginate @tasks %></h5>
 <h5><%= button_to '新しいタスクを追加する', {controller: "tasks", action: "new"}, {method: :get} %></h5>

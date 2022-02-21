@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
   let! (:task){ FactoryBot.create(:task, name: 'task', expired_at: '02/19', status: "完了", priority: "低") }
   let! (:task_second){ FactoryBot.create(:task, name: 'task_second', expired_at: '02/17', status: "未着手", priority: "中") }
-  let! (:task_third){ FactoryBot.create(:task, name: 'task_third',expired_at: '02/15', status: "", priority: "高") }
+  let! (:task_third){ FactoryBot.create(:task, name: 'task_third',expired_at: '02/15', status: "着手", priority: "高") }
   before do
     visit tasks_path
   end
@@ -13,14 +13,13 @@ RSpec.describe 'タスク管理機能', type: :system do
         fill_in 'task_name', with: "Anything"
         fill_in 'task_detail', with: "NothingToDo"
         fill_in 'task[expired_at]', with: '002020-10-06-10:10'
-        sleep(3)
+        sleep(1)
         select '完了'
         click_on 'commit'
         expect(page).to have_content 'task'
       end
     end
   end
-
   describe '一覧表示機能' do
     context '一覧画面に遷移した場合' do
       it '作成済みのタスク一覧が表示される' do
@@ -80,11 +79,9 @@ RSpec.describe 'タスク管理機能', type: :system do
   describe 'Manage funciton for task', type: :system do
     describe 'search system' do
       before do
-        # FactoryBot.create(:task, title: "task")
-        # FactoryBot.create
         FactoryBot.create(:task, name: 'task', status: "完了")
         FactoryBot.create(:task, name: 'task_second', status: "未着手")
-        FactoryBot.create(:task, name: 'task_third', status: "")
+        FactoryBot.create(:task, name: 'task_third', status: "着手")
       end
       context 'search with vague letters for name field' do
         it 'will find specific names by the keywords' do
@@ -108,11 +105,9 @@ RSpec.describe 'タスク管理機能', type: :system do
           fill_in "task[search]", with: "task"
           select "完了"
           click_on "検索する"
-          # binding.pry
           expect(page).to have_content "task"
         end
       end
     end
   end
-      
 end

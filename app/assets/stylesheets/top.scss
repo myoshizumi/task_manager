@@ -1,6 +1,7 @@
 html {
 	position: relative;
 	min-height: 100%;
+	min-width: 100%;
 }
 h1 {
 	text-align: center;
@@ -20,6 +21,7 @@ h5 {
 }
 body {
 	text-align: center;
+	width: 100%;
 	background: linear-gradient(to bottom right, #000000, hsl(0, 0%, 50%));
 }
 
@@ -27,6 +29,7 @@ body {
 	text-align: center;
 	// border: solid 5px rgb(0, 0, 0);
 	margin: 30px auto;
+	width: 85%;
 }
 
 .index_table th {
@@ -39,4 +42,8 @@ body {
 
 .task_row {
 	text-underline-offset: initial;
+}
+.pagenate {
+	float: right;
+	// position: fixed;
 }

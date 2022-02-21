@@ -2,21 +2,15 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
   
   def index
-    # @tasks = Task.page(params[:page]).per(10)
-    # @tasks = Task.all.page(5).per(5)
     @tasks = Task.all.page(params[:page]).per(5)
     if params[:task].present? 
       if status_params.present? && search_params.present?
-        # @tasks = Task.task_status
-        @tasks = Task.where(status: status_params).page(params[:page]).per(5)
-        # @tasks = @tasks.task_search.page(params[:page]).per(5)
-        @tasks = @tasks.where('name LIKE ?', "%#{search_params}%").page(params[:page]).per(5)
+        @tasks = Task.task_status(status_params).page(params[:page]).per(5)
+        @tasks = @tasks.task_search(search_params).page(params[:page]).per(5)
       elsif search_params.present? 
-        # @tasks = @tasks.task_search.page(params[:page]).per(5)
-        @tasks = @tasks.where('name LIKE ?', "%#{search_params}%").page(params[:page]).per(5)
+        @tasks = @tasks.task_search(search_params).page(params[:page]).per(5)
       elsif status_params.present?
-        # @tasks = Task.task_status
-        @tasks = Task.where(status: status_params).page(params[:page]).per(5)
+        @tasks = Task.task_status(status_params).page(params[:page]).per(5)
       end
     elsif params[:sort_expired]
       @tasks = Task.all.order(expired_at: :desc).page(params[:page]).per(5)

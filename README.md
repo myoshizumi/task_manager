@@ -19,6 +19,11 @@ Rails version             6.0.4.6
 | :---: | :---:| 
 |  name   |  string   | 
 | detail  |  text   | 
+| created_at | datetime |
+| expired_at | daterime |
+| status | integer |
+| priority | integer |
+
 ------------------------------
 **Herokuへのデプロイ手順**
 1. heroku create

@@ -13,6 +13,7 @@
 
   <table class="index_table">
     <tr>
+      <th>ユーザーネーム</th>
       <th>タスク名</th>
       <th>タスク詳細</th>
       <th>ステータス</th>
@@ -22,6 +23,7 @@
     </tr>
     <% @tasks.each do |task| %>
       <tr class="task_row">
+        <td class="user_name"><%= task.user.name %></td>
         <td class="task_name"><%= task.name %></td>
         <td class="task_detail"><%= task.detail %></td>
         <td class="task_status"><%= task.status %></td>

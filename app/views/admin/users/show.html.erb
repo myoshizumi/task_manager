@@ -1,0 +1,4 @@
+<h1><%= @user.name %>のページ</h1>
+<h5>メールアドレス : <%= @user.email %></h5>
+<h5>管理者権限<%= @user.admin %></h5>
+<h4><%= button_to "ユーザー管理一覧に戻る", admin_users_path, method: :get %></h4>

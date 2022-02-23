@@ -15,6 +15,18 @@ class SessionsController < ApplicationController
     end
   end
 
+  # def edit
+  #   @user = User.find(params[:id])
+  # end
+
+  # def update
+  #   if @user.update(user_params)
+  #     redirect_to admin_users_path, notice: "ユーザーを編集しました。"
+  #   else
+  #     render :edit
+  #   end
+  # end
+
   def destroy
     session.delete(:user_id)
     flash[:notice] = "ログアウトしました"

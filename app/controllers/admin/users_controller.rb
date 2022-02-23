@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  # before_action :admin_exist, only: %i[destroy]
   before_action :set_user, only: %i[show edit update destroy]
   before_action :only_admin
 
@@ -12,15 +13,15 @@ class Admin::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to user_path(@user.id)
+    if @user.save  && current_user.admin
+      redirect_to admin_users_path, notice: "ユーザーを新規登録しました。"
     else
       render :new
     end
   end
 
   def show
+    @tasks = User.find(params[:id]).tasks.page(params[:page]).per(5)
   end
 
   def edit 
@@ -49,4 +50,9 @@ class Admin::UsersController < ApplicationController
   def only_admin
     redirect_to root_path, notice: "管理者以外はアクセスできません！" unless current_user.admin?
   end
+
+  # def admin_exist
+  #   puts "管理者が最低一人必要です"
+  #   redirect_to admin_users_path if user.admin.count == 1
+  # end
 end

@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
   
   def index
-    @tasks = current_user.tasks.page(params[:page]).per(5)
+    @tasks = current_user.tasks.includes(:user).page(params[:page]).per(5)
     if params[:task].present? 
       if status_params.present? && search_params.present?
         @tasks = Task.task_status(status_params).page(params[:page]).per(5)
@@ -36,15 +36,12 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
   end
 
   def edit
-    @task = Task.find(params[:id])
   end
 
   def update
-    @task = Task.find(params[:id])
     if @task.update(task_params)
       redirect_to tasks_path, notice: "タスクを編集しました。"
     else

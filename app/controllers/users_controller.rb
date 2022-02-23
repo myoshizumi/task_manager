@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user.id)
+    # elsif @user.save && current_user.admin
+    #   redirect_to admin_users_path, notice: "ユーザーを新規登録しました。"
     else
       render :new
     end
@@ -19,19 +21,21 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tasks = User.find(params[:id]).tasks.page(params[:page]).per(5)
   end
 
-  # def edit
-  #   @user = User.find(params[:id])
-  # end
+  def edit
+    @user = User.find(params[:id])
+  end
 
-  # def update
-  #   if @user.update(user_params)
-  #     redirect_to admin_users_path, notice: "ユーザーを編集しました。"
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to users_path, notice: "ユーザーを編集しました。"
+    else
+      render :edit
+    end
+  end
 
   private
 

@@ -1,4 +1,29 @@
 <h1><%= @user.name %>のページ</h1>
 <h5>メールアドレス : <%= @user.email %></h5>
-<h5><%= button_to "タスク一覧に戻る", tasks_path, method: :get %></h5>
-<h5><%= button_to "ユーザー管理一覧に戻る", admin_user_path, method: :get %></h5>
+
+
+  <table class="index_table">
+    <tr>
+      <th>ユーザーネーム</th>
+      <th>タスク名</th>
+      <th>タスク詳細</th>
+      <th>ステータス</th>
+      <th>優先順位</th>
+      <th>投稿時刻</th>
+      <th>投稿時刻</th>
+    </tr>
+    <% @tasks.each do |task| %>
+      <tr class="task_row">
+        <td class="user_name"><%= task.user.name %></td>
+        <td class="task_name"><%= task.name %></td>
+        <td class="task_detail"><%= task.detail %></td>
+        <td class="task_status"><%= task.status %></td>
+        <td class="task_expired_at"><%= l task.expired_at, format: :short %></td>
+        <td class="task_priority"><%= task.priority %></td>
+        <td><%= l task.updated_at, format: :short %></td>
+      </tr>
+    <% end %>  
+  </table>
+  <h4><%= button_to "タスク一覧に戻る", tasks_path, method: :get %></h4>
+  <h4><%= button_to "ユーザー管理一覧に戻る", admin_users_path, method: :get %></h4>
+

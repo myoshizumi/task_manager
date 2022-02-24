@@ -6,3 +6,8 @@ User.create(name: "No",
     password: "anymore",
     password_confirmation: "anymore",
     admin: true)
+User.create(name: "Admin",
+    email: "no@errors.com",
+    password: "nomore",
+    password_confirmation: "nomore",
+    admin: true)

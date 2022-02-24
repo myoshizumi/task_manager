@@ -1,8 +1,9 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
-  let! (:task){ FactoryBot.create(:task, name: 'task', expired_at: '02/19', status: "完了", priority: "低") }
-  let! (:task_second){ FactoryBot.create(:task, name: 'task_second', expired_at: '02/17', status: "未着手", priority: "中") }
-  let! (:task_third){ FactoryBot.create(:task, name: 'task_third',expired_at: '02/15', status: "着手", priority: "高") }
+  let! (:user){ FactoryBot.create(:user) }
+  let! (:task){ FactoryBot.create(:task, user: user, name: 'task', expired_at: '02/19', status: "完了", priority: "低") }
+  let! (:task_second){ FactoryBot.create(:task, user: user, name: 'task_second', expired_at: '02/17', status: "未着手", priority: "中") }
+  let! (:task_third){ FactoryBot.create(:task, user: user, name: 'task_third',expired_at: '02/15', status: "着手", priority: "高") }
   before do
     visit tasks_path
   end

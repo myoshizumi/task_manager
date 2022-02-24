@@ -8,12 +8,12 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.page(params[:page]).per(5)
+    @users = User.select(:id, :name).page(params[:page]).per(5)
   end
 
   def create
     @user = User.new(user_params)
-    if @user.save  && current_user.admin
+    if @user.save  && current_user.admin?
       redirect_to admin_users_path, notice: "ユーザーを新規登録しました。"
     else
       render :new
@@ -42,6 +42,10 @@ class Admin::UsersController < ApplicationController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
+  end
 
   def set_user
     @user = User.find(params[:id])

@@ -6,8 +6,13 @@ class User < ApplicationRecord
   before_validation { email.downcase! }
   has_secure_password
   validates :password, length: { minimum: 6 }
-
-  private
-
+  validates :admin, inclusion: {in: [true, false]}
+  before_destroy :make_sure_admin_exist
+  before_update :make_sure_admin_exist
   
+  private
+  
+  def make_sure_admin_exist
+    throw(:abort) if User.select(admin:true).ids.count == 1
+  end
 end

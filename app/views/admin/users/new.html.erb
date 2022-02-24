@@ -1,6 +1,6 @@
 <h1>新規ユーザーを登録する</h1>
 
-<%= form_with(model: @user, local:true) do |f| %>
+<%= form_with(model: [:admin, @user], local:true) do |f| %>
 
   <% if @user.errors.any? %>
     <div id="error_explanation">

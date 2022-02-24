@@ -12,8 +12,6 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user.id)
-    # elsif @user.save && current_user.admin
-    #   redirect_to admin_users_path, notice: "ユーザーを新規登録しました。"
     else
       render :new
     end

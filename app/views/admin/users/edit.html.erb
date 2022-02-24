@@ -3,7 +3,7 @@
 <h5>管理者権限<%= @user.admin %></h5>
 <h5><%= button_to "ユーザー管理一覧に戻る", admin_users_path, method: :get %></h5>
 
-<%= form_with(model: @user, local:true) do |f| %>
+<%= form_with(model: [:admin, @user], local:true) do |f| %>
 
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -28,6 +28,8 @@
   <h5><%= f.label :password_confirmation%></h5>
   <h5><%= f.password_field :password_confirmation%></h5>
 
-  <h5><%= f.submit "ユーザーを編集する", method: :patch%></h5>
+  <h5><%= f.label :admin %></h5>
+  <h5><%= f.select :admin, [['false', 0], ['true', 1]] %>
+  <h5><%= f.submit "ユーザーを編集する"%></h5>
 
 <% end %>

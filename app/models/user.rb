@@ -13,6 +13,8 @@ class User < ApplicationRecord
   private
   
   def make_sure_admin_exist
-    throw(:abort) if User.select(admin:true).ids.count == 1
+    if User.where(admin:true).ids.count == 1 && self.admin?
+      throw(:abort) 
+    end
   end
 end

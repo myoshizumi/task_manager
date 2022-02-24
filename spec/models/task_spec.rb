@@ -1,8 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Task, type: :model do
+  
   describe 'バリデーションのテスト' do
-    context 'タスクのタイトルがからの場合' do
+    before do
+      FactoryBot.create(:user, id:1, name: "a", email: "s@s.s", password:"aaaaaa")
+      FactoryBot.create(:task, id:1, user: user)
+    end
+    context 'タスクのタイトルが空の場合' do
       it 'バリデーションにひっかかる' do
         task = Task.new(name: '', detail: 'no_detail')
         expect(task).not_to be_valid
@@ -16,7 +21,7 @@ RSpec.describe Task, type: :model do
     end
     context 'タスクのタイトルと詳細に内容が記載されている場合' do
       it 'バリデーションが通る' do
-        task = Task.new(name: 'no_name', detail: 'no_detail', expired_at: '01/01 11:11') 
+        task = Task.new(name: 'no_name', detail: 'no_detail', expired_at: '01/01 11:11', user_id: 1) 
         expect(task).to be_valid
       end
     end

@@ -10,4 +10,4 @@ User.create(name: "Admin",
     email: "no@errors.com",
     password: "nomore",
     password_confirmation: "nomore",
-    admin: true)
+    admin: false)

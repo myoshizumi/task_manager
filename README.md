@@ -19,6 +19,26 @@ Rails version             6.0.4.6
 | :---: | :---:| 
 |  name   |  string   | 
 | detail  |  text   | 
+| created_at | datetime |
+| expired_at | daterime |
+| status | integer |
+| priority | integer |
+
+------------------------------
+**Herokuへのデプロイ手順**
+1. heroku create
+2. git add -A
+3. git commit -m "init"
+4. heroku buildpacks:set heroku/ruby
+5. heroku buildpacks:add --index 1 heroku/nodejs
+6. **git push heroku step2:main** ***Error occured...***
+7. bundle lock --add-platform x86_64-linux
+8. git add -A
+9. git commit -m 'Add platform'
+10. git push heroku ***step2:main***
+11. heroku run rails db:migrate
+
+---------------------------------
 
 User 
 - Task (*only the useer can see = login system??)

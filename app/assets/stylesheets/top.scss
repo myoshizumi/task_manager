@@ -1,0 +1,64 @@
+html {
+	position: relative;
+	min-height: 100%;
+	min-width: 100%;
+}
+h1 {
+	text-align: center;
+	color: #ffffff;
+}
+h2 {
+	text-align: center;
+	color: #ffffff;
+}
+h4 {
+	text-align: center;
+	color: #ffffff;
+}
+h5 {
+	text-align: center;
+	color: #ffffff;
+}
+body {
+	text-align: center;
+	width: 100%;
+	background: linear-gradient(to bottom right, #000000, hsl(0, 0%, 50%));
+}
+
+.index_table {
+	text-align: center;
+	// border: solid 5px rgb(0, 0, 0);
+	margin: 30px auto;
+	width: 85%;
+}
+
+.index_table th {
+	color: white;
+}
+
+.index_table td {
+	color: white;
+}
+
+.task_row {
+	text-underline-offset: initial;
+}
+.pagenate {
+	float: right;
+	// position: fixed;
+}
+
+.admin_table {
+	text-align: center;
+	border: solid 1px rgb(255, 255, 255);
+	margin: 30px auto;
+	width: 85%;
+}
+
+// .admin_table th {
+// 	color: white;
+// }
+
+// .admin_table td {
+// 	color: white;
+// }

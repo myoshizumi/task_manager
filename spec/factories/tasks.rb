@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :task do
+    association :user
     name { 'test_name' }
     detail { 'test_detail' }  
     expired_at { '01/01 11:11'} 

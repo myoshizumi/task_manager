@@ -1,13 +1,7 @@
 # coding: utf-8
 
-# User.create(name: "No", email: "more@errors.com", password_digest: "anymore")
-User.create(name: "No",
-    email: "nomore@errors.com",
-    password: "anymore",
-    password_confirmation: "anymore",
-    admin: false)
 User.create(name: "Admin",
-    email: "no@errors.com",
+    email: "no2@errors.com",
     password: "nomore",
     password_confirmation: "nomore",
     admin: false)
@@ -17,3 +11,8 @@ User.create(name: "mine",
     password_confirmation: "noerror",
     admin: true)
 
+Label.create(name: "Work")
+Label.create(name: "Private")
+Label.create(name: "School")
+Label.create(name: "Community")
+Label.create(name: "Family")

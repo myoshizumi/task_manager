@@ -5,4 +5,9 @@
 <h4>終了期限 : <%= @task.expired_at %></h4>
 <h4>優先順位 : <%= @task.priority %></h4>
 <h4>投稿時刻 : <%= @task.created_at %></h4>
+<h4>レーベル : </h4>
+  <% @task.labels.each do |label| %>
+    <h4><%= label.name %></h4>
+  <% end %>
+
 <h4><%= button_to "タスク一覧に戻る", tasks_path, method: :get %></h4>

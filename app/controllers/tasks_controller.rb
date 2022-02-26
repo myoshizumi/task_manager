@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   
   def index
     @tasks = current_user.tasks.includes(:user).page(params[:page]).per(5)
+    # @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id]}) if params[:label_id].present?
     if params[:task].present? 
       if status_params.present? && search_params.present?
         @tasks = Task.task_status(status_params).page(params[:page]).per(5)
@@ -11,6 +12,10 @@ class TasksController < ApplicationController
         @tasks = @tasks.task_search(search_params).page(params[:page]).per(5)
       elsif status_params.present?
         @tasks = Task.task_status(status_params).page(params[:page]).per(5)
+      elsif label_params.present?
+        # @tasks = current_user.tasks.order(priority: :asc).page(params[:page]).per(5)
+
+        @tasks = @tasks.joins(:labels).task_label(label_params).page(params[:page]).per(5)
       end
     elsif params[:sort_expired]
       @tasks = current_user.tasks.order(expired_at: :desc).page(params[:page]).per(5)
@@ -57,7 +62,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :detail, :expired_at, :status, :priority)
+    params.require(:task).permit(:name, :detail, :expired_at, :status, :priority, { label_ids: [] })
   end
 
   def status_params
@@ -66,6 +71,10 @@ class TasksController < ApplicationController
 
   def search_params
     params[:task][:search]
+  end
+
+  def label_params
+    params[:task][:label_id]
   end
 
   def set_task

@@ -4,9 +4,9 @@
   <%= form_with(url: tasks_path, scope: :task, method: :get, local: true ) do |form| %>
     <div class="name_search">
       <h5><%= form.label :search, 'タスク名とステータスによる検索' %></h5>
-      <h5><%= form.text_field :search %></h5>
-      <h5><%= form.select :status, options_for_select([[''],['未着手'], ['着手'], ['完了']]), id: "status", class: "form-control"  %></h5>
-      <%# <%= form.select :status, Task.statuses.keys.map {|k| [k, k]}, {}, { data: {} } %> 
+      <h5>タスク名で検索 : <%= form.text_field :search %></h5>
+      <h5>ステータスで検索 : <%= form.select :status, options_for_select([[''],['未着手'], ['着手'], ['完了']]), id: "status", class: "form-control"  %></h5>
+      <h5>レーベルで検索 : <%= form.select("label_id", Label.pluck(:name, :id), { include_blank: true }) %>
       <h5><%= form.submit '検索する' , name: nil %></h5>
     </div>
   <% end %>
@@ -20,6 +20,7 @@
       <th><%= link_to '終了期限', tasks_path(sort_expired: "true") %></th>
       <th><%= link_to '優先順位', tasks_path(sort_priority: "true") %></th>
       <th>投稿時刻</th>
+      <th>レーベル</th>
     </tr>
     <% @tasks.each do |task| %>
       <tr class="task_row">
@@ -30,6 +31,11 @@
         <td class="task_expired_at"><%= l task.expired_at, format: :short %></td>
         <td class="task_priority"><%= task.priority %></td>
         <td><%= l task.updated_at, format: :short %></td>
+        <td>
+          <% task.labels.each do |label| %>
+            <%= label.name %>
+          <% end %>   
+        </td>
         <td><%= button_to '詳細を確認する', task_path(task.id), method: :get %></td>
         <td><%= button_to 'タスクを編集する', edit_task_path(task.id), method: :get, data: { confirm: '本当に編集していいですか？'} %></td>
         <td><%= button_to 'タスクを削除する', task_path(task.id), method: :delete, data: { confirm: '本当に削除していいですか？'} %></td>

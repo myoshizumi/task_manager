@@ -64,7 +64,6 @@ RSpec.describe 'タスク管理機能', type: :system do
           sleep(1)
           select '完了'
           click_on 'commit'
-          # binding.pry        
           visit tasks_path
           current_path
           task_name_list = all('.task_name')
@@ -92,7 +91,6 @@ RSpec.describe 'タスク管理機能', type: :system do
           sleep(1)
           select '完了'
           click_on 'commit'
-
           visit tasks_path
           click_on "終了期限"
           sleep(2)
@@ -111,12 +109,9 @@ RSpec.describe 'タスク管理機能', type: :system do
           fill_in 'session_email', with: "a@a.a"
           fill_in 'session_password', with: "anymore"
           click_on 'Log in'
-
           visit tasks_path
           click_on "優先順位"
-          sleep(2)
-          
-
+          sleep(1)
           task_priority_list = all('.task_priority')
           expect(task_priority_list[0]).to have_content '高'
           expect(task_priority_list[1]).to have_content '中'
@@ -159,7 +154,6 @@ RSpec.describe 'タスク管理機能', type: :system do
             click_on "検索する"
             sleep(1)
             expect(page).to have_content "task_second"
-           
           end
         end
         context 'search by the status' do

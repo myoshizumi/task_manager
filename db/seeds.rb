@@ -6,11 +6,12 @@
         password_confirmation: "nomore",
         admin: false)
     end
+
 User.create(name: "mine",
-    email: "nonenone@more.com",
+    email: "no@more.com",
     password: "noerror",
     password_confirmation: "noerror",
-    admin: false)
+    admin: true)
 
 
 User.all.each do |user|
@@ -18,8 +19,7 @@ User.all.each do |user|
     user.tasks.create!(user_id: User.ids, 
     name: "Task", 
     detail: "Detail",
-    expired_at: '01/01'
-    label: )
+    expired_at: '01/01')
     end
 end
 

@@ -1,5 +1,8 @@
 FactoryBot.define do
   factory :label do
-    name { "MyString" }
+    name { "private" }
+  end
+  factory :label_second, class: Label do
+    name { "family" }
   end
 end

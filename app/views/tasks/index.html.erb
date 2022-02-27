@@ -3,7 +3,7 @@
 
   <%= form_with(url: tasks_path, scope: :task, method: :get, local: true ) do |form| %>
     <div class="name_search">
-      <h4><%= form.label :search, "is there something you are looking for???" %></h4>
+      <h5><%= form.label :search, 'タスク名とステータスによる検索' %></h5>
       <h5>タスク名で検索 : <%= form.text_field :search %></h5>
       <h5>ステータスで検索 : <%= form.select :status, options_for_select([[''],['未着手'], ['着手'], ['完了']]), id: "status", class: "form-control"  %></h5>
       <h5>レーベルで検索 : <%= form.select("label_id", Label.pluck(:name, :id), { include_blank: true }) %>

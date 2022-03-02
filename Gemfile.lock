@@ -282,6 +282,8 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   kaminari
+  kaminari-actionview
+  kaminari-activerecord
   launchy
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)

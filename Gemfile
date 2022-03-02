@@ -26,6 +26,8 @@ gem 'rexml'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'kaminari'
+gem 'kaminari-activerecord'
+gem 'kaminari-actionview'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 

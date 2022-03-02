@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  # before_action :admin_exist, only: %i[destroy]
+  before_action :admin_exist, only: %i[destroy]
   before_action :set_user, only: %i[show edit update destroy]
   before_action :only_admin
 
@@ -36,7 +36,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    # @user.tasks.user.destroy
     @user.destroy 
     redirect_to admin_users_path, notice: "ユーザーを削除しました。"
   end

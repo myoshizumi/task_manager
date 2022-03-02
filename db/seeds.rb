@@ -18,8 +18,7 @@ User.all.each do |user|
     user.tasks.create!(user_id: User.ids, 
     name: "Task", 
     detail: "Detail",
-    expired_at: '01/01'
-    label: )
+    expired_at: '01/01')
     end
 end
 

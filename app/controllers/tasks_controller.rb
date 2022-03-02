@@ -20,27 +20,6 @@ class TasksController < ApplicationController
     end
     @tasks = @tasks.page(params[:page]).per(10)
   end
-  # def index
-  #   @tasks = current_user.tasks.includes(:user).page(params[:page]).per(5)
-  #   if params[:task].present? 
-  #     if status_params.present? && search_params.present?
-  #       @tasks = Task.task_status(status_params).page(params[:page]).per(5)
-  #       @tasks = @tasks.task_search(search_params).page(params[:page]).per(5)
-  #     elsif search_params.present? 
-  #       @tasks = @tasks.task_search(search_params).page(params[:page]).per(5)
-  #     elsif status_params.present?
-  #       @tasks = Task.task_status(status_params).page(params[:page]).per(5)
-  #     elsif label_params.present?
-  #       @tasks = @tasks.joins(:labels).task_label(label_params).page(params[:page]).per(5)
-  #     end
-  #   elsif params[:sort_expired]
-  #     @tasks = current_user.tasks.order(expired_at: :desc).page(params[:page]).per(5)
-  #   elsif params[:sort_priority]
-  #     @tasks = current_user.tasks.order(priority: :asc).page(params[:page]).per(5)
-  #   else
-  #     @tasks = current_user.tasks.created_order.page(params[:page]).per(5)
-  #   end
-  # end
 
   def new
     @task = Task.new

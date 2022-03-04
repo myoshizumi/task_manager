@@ -50,6 +50,6 @@ class UsersController < ApplicationController
   end
   
   def user_only
-    redirect_to tasks_path unless current_user == User.find_by(id: params[:id]) || current_user.admin? 
+    redirect_to tasks_path unless current_user == User.find_by(id: params[:id]) 
   end
 end

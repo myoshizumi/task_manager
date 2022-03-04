@@ -59,18 +59,6 @@ class TasksController < ApplicationController
     params.require(:task).permit(:name, :detail, :expired_at, :status, :priority, { label_ids: [] })
   end
 
-  # def status_params
-  #   params[:task][:status]
-  # end
-
-  # def search_params
-  #   params[:task][:search]
-  # end
-
-  # def label_params
-  #   params[:task][:label_id]
-  # end
-
   def set_task
     @task = Task.find(params[:id])
   end

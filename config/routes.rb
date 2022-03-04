@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
   end
+  # get '*not_found', to: 'application#routing_error'
 end

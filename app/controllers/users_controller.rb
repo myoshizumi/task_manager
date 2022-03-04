@@ -18,8 +18,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @tasks = User.find(params[:id]).tasks.page(params[:page]).per(5)
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      redirect_to tasks_path
+    else
+    @tasks = @user.tasks.page(params[:page]).per(5)
+    end
   end
 
   def edit
@@ -46,6 +50,6 @@ class UsersController < ApplicationController
   end
   
   def user_only
-    redirect_to tasks_path unless current_user == User.find(params[:id]) || current_user.admin
+    redirect_to tasks_path unless current_user == User.find_by(id: params[:id]) || current_user.admin? 
   end
 end

@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     if params[:sort_priority]
       @tasks = @tasks.order(priority: :asc)
     end
-    @tasks = @tasks.page(params[:page]).per(10)
+    @tasks = @tasks.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new

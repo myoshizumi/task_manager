@@ -40,7 +40,6 @@ RSpec.describe 'タスク管理機能', type: :system do
           select '完了'
           click_on 'commit'
           visit tasks_path
-          sleep(1)
           expect(page).to have_content "NothingToDo"
         end
       end
@@ -133,7 +132,7 @@ RSpec.describe 'タスク管理機能', type: :system do
           visit tasks_path
           click_on '詳細を確認する', match: :first
           expect(page).to have_content 'タスク詳細'
-          sleep(2)
+          sleep(1)
         end
       end
     end

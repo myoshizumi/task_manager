@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
   
   def index
-    @tasks =current_user.tasks.includes(:user)
+    @tasks =current_user.tasks.includes([:labels])
     if status_params =params.dig(:task, :status).presence
       @tasks = @tasks.task_status(status_params)
     end

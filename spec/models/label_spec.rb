@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Label, type: :model do
@@ -6,7 +8,7 @@ RSpec.describe Label, type: :model do
   end
   context 'new label has been created ' do
     it 'will still be valid' do
-      label = FactoryBot.create(:label)
+      FactoryBot.create(:label)
       label = Label.new(name: 'Work')
       expect(label).to be_valid
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   skip_before_action :login_required, only: %i[new create]
   before_action :login_user, only: %i[new]
@@ -11,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user.id), notice: "ログインしました"
+      redirect_to user_path(@user.id), notice: 'ログインしました'
     else
       render :new
     end
@@ -22,7 +24,7 @@ class UsersController < ApplicationController
     if @user.nil?
       redirect_to tasks_path
     else
-    @tasks = @user.tasks.page(params[:page]).per(5)
+      @tasks = @user.tasks.page(params[:page]).per(5)
     end
   end
 
@@ -33,7 +35,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to users_path, notice: "ユーザーを編集しました。"
+      redirect_to users_path, notice: 'ユーザーを編集しました。'
     else
       render :edit
     end
@@ -44,12 +46,12 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-  
+
   def login_user
     redirect_to tasks_path if current_user
   end
-  
+
   def user_only
-    redirect_to tasks_path unless current_user == User.find_by(id: params[:id]) 
+    redirect_to tasks_path unless current_user == User.find_by(id: params[:id])
   end
 end

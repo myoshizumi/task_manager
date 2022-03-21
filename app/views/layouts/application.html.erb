@@ -16,7 +16,7 @@
 
     <% if logged_in? %>
       <h5><%= link_to "Profile", user_path(current_user.id) %></h5>
-      <h5><%= link_to "Logout", session_path(current_user.id), method: :delete %></h5>
+      <h5><%= button_to "Logout", session_path(current_user.id), method: :delete %></h5>
     <% else %>
       <h5><%= link_to "Sign up", new_user_path %></h5>
       <h5><%= link_to "Login", new_session_path%></h5>

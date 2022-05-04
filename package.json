@@ -8,6 +8,7 @@
     "@rails/webpacker": "5.4.3",
     "bootstrap": "4.5.0",
     "jquery": "3.5.1",
+    "node-forge": "^1.3.1",
     "popper.js": "1.16.0",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
@@ -15,6 +16,27 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "selfsigned": "^2.0.1",
     "webpack-dev-server": "^3"
-  }
+  },
+  "description": "",
+  "main": "babel.config.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myoshizumi/assignment-mk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myoshizumi/assignment-mk/issues"
+  },
+  "homepage": "https://github.com/myoshizumi/assignment-mk#readme"
 }

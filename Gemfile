@@ -25,6 +25,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'erb2haml'
 gem 'haml-rails'
 gem 'rubocop', require: false
+gem 'rubocop-performance', require: false
+gem 'rubocop-rails', require: false
+gem 'rufo'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # Reduces boot times through caching; required in config/boot.rb
@@ -34,6 +37,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'kaminari-actionview'
 gem 'kaminari-activerecord'
+gem 'rails_best_practices'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

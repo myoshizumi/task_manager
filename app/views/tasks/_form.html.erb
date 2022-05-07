@@ -1,16 +1,16 @@
-<%= form_with(model: @task, local: true) do |form| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @task.errors.count %>件のエラーがあります。</h2>
-      <div>
-        <% @task.errors.full_messages.each do |msg| %>
-          <h5><%= msg %></h5>
-        <% end %>  
-      </ul>
-    </div>
+<%= form_with(model: task, local: true) do |form| %>
+<% if task.errors.any? %>
+<div id="error_explanation">
+  <h2><%= task.errors.count %>件のエラーがあります。</h2>
+  <div>
+    <% task.errors.full_messages.each do |msg| %>
+    <h5><%= msg %></h5>
+    <% end %>
+    </ul>
+  </div>
   <% end %>
 
-  <div class="new_contents"> 
+  <div class="new_contents">
     <div class="task_name">
       <h4><%= form.label :name, 'タスク名' %></h4>
       <h4><%= form.text_field :name %></h4>
@@ -36,7 +36,5 @@
     </div>
     <h4><%= form.submit style: 'margin-bottom: 10px;' %></h4>
   </div>
-<% end %>
-<h4><%= button_to "タスク一覧に戻る", tasks_path, method: :get %></h4>
-
-
+  <% end %>
+  <h4><%= button_to "タスク一覧に戻る", tasks_path, method: :get %></h4>
